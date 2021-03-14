@@ -2,14 +2,17 @@
   <nav
     class="fixed top-0 h-20 w-screen bg-white flex items-center shadow-md bg-indigo-500"
   >
-    <a
+    <nuxt-link
+      to="/"
       class="ml-8 hover:bg-indigo-600 px-4 py-3 rounded-md cursor-pointer"
-      @click.prevent="scrollToTop()"
     >
-      <span class="text-4xl font-bold text-white border-b-2 border-white">
+      <span
+        class="text-4xl font-bold text-white border-b-2 border-white"
+        @click.prevent="scrollToTop()"
+      >
         dev.to feed
       </span>
-    </a>
+    </nuxt-link>
   </nav>
 </template>
 

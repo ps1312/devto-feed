@@ -3,7 +3,7 @@
     <base-nav-bar />
 
     <div class="pt-28 lg:max-w-4xl mx-auto">
-      <Nuxt />
+      <Nuxt keep-alive />
     </div>
   </div>
 </template>
