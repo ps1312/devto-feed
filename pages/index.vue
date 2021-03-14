@@ -35,8 +35,17 @@ export default Vue.extend({
     }
   },
   async fetch() {
-    const response = await this.$axios.get('https://dev.to/api/articles')
+    const response = await this.$axios.get('https://dev.to/api/articles', {
+      params: {
+        state: this.sortByTrending ? 'rising' : 'fresh',
+      },
+    })
     this.posts = response.data
+  },
+  watch: {
+    sortByTrending() {
+      this.$fetch()
+    },
   },
 })
 </script>
