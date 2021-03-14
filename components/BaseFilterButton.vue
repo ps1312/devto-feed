@@ -1,6 +1,9 @@
 <template>
   <button
-    :class="[active ? 'mb-2 px-2 bg-indigo-500 rounded' : 'mb-2 px-2 rounded']"
+    :class="[
+      'focus:outline-none',
+      active ? 'mb-2 px-2 bg-indigo-500 rounded' : 'mb-2 px-2 rounded',
+    ]"
     @click="$emit('click')"
   >
     <span
