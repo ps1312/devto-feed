@@ -14,23 +14,27 @@
       />
     </div>
 
+    <tags-list @ontagsupdated="onTagsUpdated" />
+
     <post-list :posts="posts" />
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import BaseFilterButton from '~/components/BaseFilterButton.vue'
 import PostList from '~/components/PostList.vue'
+import TagsList from '~/components/TagsList.vue'
 
-export default Vue.extend({
+export default {
   components: {
     PostList,
     BaseFilterButton,
+    TagsList,
   },
   data() {
     return {
       posts: [],
+      selectedTag: '',
       sortByTrending: true,
     }
   },
@@ -38,6 +42,7 @@ export default Vue.extend({
     const response = await this.$axios.get('https://dev.to/api/articles', {
       params: {
         state: this.sortByTrending ? 'rising' : 'fresh',
+        tag: this.selectedTag,
       },
     })
     this.posts = response.data
@@ -47,5 +52,11 @@ export default Vue.extend({
       this.$fetch()
     },
   },
-})
+  methods: {
+    onTagsUpdated(selectedTag) {
+      this.selectedTag = selectedTag
+      this.$fetch()
+    },
+  },
+}
 </script>
