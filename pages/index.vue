@@ -42,7 +42,7 @@ export default {
     const response = await this.$axios.get('https://dev.to/api/articles', {
       params: {
         state: this.sortByTrending ? 'rising' : 'fresh',
-        tag: this.selectedTag,
+        tag: this.selectedTag || null,
       },
     })
     this.posts = response.data
