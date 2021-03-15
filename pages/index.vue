@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-4">
+  <div class="space-y-4 px-4 lg:max-w-6xl mx-auto">
     <div class="w-full border-b-4 border-gray-600 inline-flex justify-between">
       <base-filter-button
         :active="sortByTrending"

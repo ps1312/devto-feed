@@ -4,7 +4,7 @@
   >
     <nuxt-link
       to="/"
-      class="ml-8 hover:bg-indigo-600 px-4 py-3 rounded-md cursor-pointer"
+      class="ml-4 md:ml-8 hover:bg-indigo-600 px-4 py-3 rounded-md cursor-pointer"
     >
       <span
         class="text-4xl font-bold text-white border-b-2 border-white"
