@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex flex-col space-y-4 items-center">
+  <ul class="flex flex-col space-y-4 items-center bg-green-400">
     <li
       v-for="item in items"
       id="item"
@@ -8,6 +8,7 @@
       class="h-16 w-16 bg-indigo-700 block text-white text-3xl flex justify-center items-center"
       @dragstart="onDragStart($event, item)"
       @dragover="onDragOver($event)"
+      @drag="onDrag"
       @drop="onDrop($event, item)"
     >
       {{ item }}
@@ -32,6 +33,11 @@ export default {
   methods: {
     onDragStart(ev, from) {
       ev.dataTransfer.setData('text/plain', from)
+    },
+    onDrag(ev) {
+      if (ev.clientY <= 100) {
+        window.scrollTo(0, window.scrollY - 5)
+      }
     },
     onDrop(ev, to) {
       ev.preventDefault()
