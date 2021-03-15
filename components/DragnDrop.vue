@@ -1,17 +1,17 @@
 <template>
   <ul class="flex flex-col space-y-4 items-center bg-green-400">
     <li
-      v-for="item in items"
+      v-for="(item, index) in items"
       id="item"
-      :key="item"
+      :key="item.id"
       draggable="true"
-      class="h-16 w-16 bg-indigo-700 block text-white text-3xl flex justify-center items-center"
-      @dragstart="onDragStart($event, item)"
+      class="bg-indigo-700 block text-white text-3xl flex justify-center items-center"
+      @dragstart="onDragStart($event, index)"
       @dragover="onDragOver($event)"
       @drag="onDrag"
-      @drop="onDrop($event, item)"
+      @drop="onDrop($event, index)"
     >
-      {{ item }}
+      {{ item.title }}
     </li>
   </ul>
 </template>
@@ -39,13 +39,10 @@ export default {
         window.scrollTo(0, window.scrollY - 5)
       }
     },
-    onDrop(ev, to) {
+    onDrop(ev, toIndex) {
       ev.preventDefault()
       const newItems = [...this.items]
-
-      const from = ev.dataTransfer.getData('text/plain')
-      const fromIndex = this.items.indexOf(Number(from))
-      const toIndex = this.items.indexOf(to)
+      const fromIndex = ev.dataTransfer.getData('text/plain')
 
       const temp = newItems[fromIndex]
       newItems[fromIndex] = newItems[toIndex]

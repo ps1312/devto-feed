@@ -1,5 +1,5 @@
 <template>
-  <dragn-drop :item-props="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]" />
+  <dragn-drop :item-props="listings" />
 </template>
 
 <script lang="ts">
@@ -8,6 +8,16 @@ import DragnDrop from '~/components/DragnDrop.vue'
 
 export default Vue.extend({
   components: { DragnDrop },
+  data() {
+    return {
+      listings: [],
+    }
+  },
+  async fetch() {
+    const response = await this.$axios.get('https://dev.to/api/listings')
+
+    this.listings = response.data
+  },
 })
 </script>
 
