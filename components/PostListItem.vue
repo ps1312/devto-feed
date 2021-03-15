@@ -2,7 +2,7 @@
   <div
     class="mx-4 my-3 rounded-2xl shadow-md border-4 border-white bg-white hover:shadow-xl hover:border-indigo-700"
   >
-    <nuxt-link :to="'/' + post.id">
+    <a :href="post.url" target="_blank" rel="noopener noreferrer">
       <img class="rounded-tl-xl rounded-tr-xl" :src="post.cover_image" />
 
       <div class="p-4 flex flex-col space-y-1">
@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-    </nuxt-link>
+    </a>
   </div>
 </template>
 
