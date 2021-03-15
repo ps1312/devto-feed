@@ -69,14 +69,16 @@ export default {
       const newItems = [...this.items]
       const fromIndex = ev.dataTransfer.getData('text/plain')
 
-      const temp = newItems[fromIndex]
-      newItems[fromIndex] = newItems[toIndex]
-      newItems[toIndex] = temp
-
-      this.items = newItems
+      this.items = this.swapIndexes(newItems, fromIndex, toIndex)
     },
     onDragOver(ev) {
       ev.preventDefault()
+    },
+    swapIndexes(arr, fromIndex, toIndex) {
+      const temp = arr[fromIndex]
+      arr[fromIndex] = arr[toIndex]
+      arr[toIndex] = temp
+      return arr
     },
   },
 }

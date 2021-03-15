@@ -13,6 +13,15 @@
         dev.to feed
       </span>
     </nuxt-link>
+
+    <nuxt-link
+      to="/listings"
+      class="ml-8 hover:bg-indigo-600 py-1 px-2 rounded-md cursor-pointer"
+    >
+      <span class="text-xl font-bold text-white" @click="scrollToTop">
+        Listings
+      </span>
+    </nuxt-link>
   </nav>
 </template>
 
