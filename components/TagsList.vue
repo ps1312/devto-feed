@@ -1,9 +1,9 @@
 <template>
-  <ul class="flex justify-between">
+  <ul class="flex justify-between overflow-x-auto py-4">
     <li v-for="tag in tags" :key="tag.name">
       <button
         :class="[
-          'mr-2 mt-2 px-2 py-1 font-medium text-base rounded-md focus:outline-none',
+          'mr-2 px-2 font-medium text-base rounded-md focus:outline-none ',
           selectedTag.includes(tag.name)
             ? 'bg-indigo-500 text-gray-100'
             : 'bg-white text-gray-800',

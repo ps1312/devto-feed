@@ -8,7 +8,7 @@
     >
       <span
         class="text-4xl font-bold text-white border-b-2 border-white"
-        @click.prevent="scrollToTop()"
+        @click="scrollToTop"
       >
         dev.to feed
       </span>
