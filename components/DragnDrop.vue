@@ -5,7 +5,7 @@
       id="item"
       :key="item"
       draggable="true"
-      class="h-16 w-16 bg-indigo-700 block text-white text-lg"
+      class="h-16 w-16 bg-indigo-700 block text-white text-3xl flex justify-center items-center"
       @dragstart="onDragStart($event, item)"
       @dragover="onDragOver($event)"
       @drop="onDrop($event, item)"
@@ -18,12 +18,17 @@
 <script>
 export default {
   name: 'DragnDrop',
+  props: {
+    itemProps: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
-      items: [0, 1, 2],
+      items: [...this.itemProps],
     }
   },
-
   methods: {
     onDragStart(ev, from) {
       ev.dataTransfer.setData('text/plain', from)

@@ -4,7 +4,11 @@ import DragnDrop from '@/components/DragnDrop.vue'
 describe('DragnDrop.vue', () => {
   it('reorders list on drag and drop events', async () => {
     let wrappersList
-    const wrapper = mount(DragnDrop)
+    const wrapper = mount(DragnDrop, {
+      propsData: {
+        itemProps: [0, 1, 2],
+      },
+    })
 
     wrappersList = await wrapper.findAll('li').wrappers
     await simulate(wrappersList[2], 'dragstart')
