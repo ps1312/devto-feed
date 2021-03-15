@@ -1,5 +1,5 @@
 <template>
-  <dragn-drop :item-props="listings" />
+  <dragn-drop class="md:max-w-xl mx-auto" :item-props="listings" />
 </template>
 
 <script lang="ts">
