@@ -3,9 +3,9 @@
     <div
       v-for="(input, index) in inputFields"
       :id="'input-' + index"
-      :key="input"
+      :key="input.id"
     >
-      <input :value="input" />
+      <input :value="input.value" />
       <button aria-label="Remove" @click="removeField(index)">-</button>
     </div>
 
@@ -30,7 +30,7 @@ export default {
   methods: {
     addField() {
       const newInputFields = [...this.inputFields]
-      newInputFields.push(this.inputFields.length + 1)
+      newInputFields.push({ id: this.inputFields.length + 1 })
       this.inputFields = newInputFields
     },
     removeField(index) {
