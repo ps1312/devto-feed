@@ -1,7 +1,15 @@
 <template>
   <div>
-    <input v-for="input in inputFields" :key="input" />
-    <button @click="addField">+ Add</button>
+    <div
+      v-for="(input, index) in inputFields"
+      :id="'input-' + index"
+      :key="input"
+    >
+      <input />
+      <button aria-label="Remove" @click="removeField(index)">-</button>
+    </div>
+
+    <button aria-label="Add" @click="addField">+ Add</button>
   </div>
 </template>
 
@@ -15,7 +23,14 @@ export default {
   },
   methods: {
     addField() {
-      this.inputFields.push(this.inputFields.length + 1)
+      const newInputFields = [...this.inputFields]
+      newInputFields.push(this.inputFields.length + 1)
+      this.inputFields = newInputFields
+    },
+    removeField(index) {
+      const newInputFields = [...this.inputFields]
+      newInputFields.splice(index, 1)
+      this.inputFields = newInputFields
     },
   },
 }
