@@ -5,7 +5,7 @@
       :id="'input-' + index"
       :key="input"
     >
-      <input />
+      <input :value="input" />
       <button aria-label="Remove" @click="removeField(index)">-</button>
     </div>
 
@@ -17,18 +17,15 @@
 export default {
   name: 'DynamicTextInput',
   props: {
-    initialFields: {
+    initialInputFields: {
       type: Array,
       required: true,
     },
   },
   data() {
     return {
-      inputFields: [],
+      inputFields: [...this.initialInputFields],
     }
-  },
-  mounted() {
-    this.inputFields = this.initialFields
   },
   methods: {
     addField() {

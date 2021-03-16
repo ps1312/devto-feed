@@ -35,9 +35,26 @@ describe('DynamicTextInput.vue', () => {
     expect(wrapper.findAll('input').length).toEqual(1)
   })
 
-  function buildWrapper(initialFields = []) {
+  it('should init with correct number of initialInputFields with its values', () => {
+    const initialInputFields = [
+      'filled input 1',
+      'filled input 2',
+      'filled input 3',
+    ]
+
+    const wrapper = buildWrapper(initialInputFields)
+
+    const fields = wrapper.findAll('input')
+    expect(fields.length).toEqual(3)
+
+    fields.wrappers.forEach((field, index) => {
+      expect(field.element.value).toContain(initialInputFields[index])
+    })
+  })
+
+  function buildWrapper(initialInputFields = []) {
     return mount(DynamicTextInput, {
-      propsData: { initialFields },
+      propsData: { initialInputFields },
     })
   }
 })
