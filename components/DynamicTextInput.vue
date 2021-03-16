@@ -16,10 +16,19 @@
 <script>
 export default {
   name: 'DynamicTextInput',
+  props: {
+    initialFields: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       inputFields: [],
     }
+  },
+  mounted() {
+    this.inputFields = this.initialFields
   },
   methods: {
     addField() {
