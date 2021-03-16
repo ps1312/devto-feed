@@ -65,6 +65,18 @@ describe('DynamicTextInput.vue', () => {
     expect(input.element.value).not.toEqual('')
   })
 
+  it('should update positions correctly on remove field', async () => {
+    const wrapper = buildWrapper()
+
+    await wrapper.find('[aria-label="Add"]').trigger('click')
+    await wrapper.find('[aria-label="Add"]').trigger('click')
+
+    const field = wrapper.find('#input-0')
+    await field.find('button').trigger('click')
+
+    expect(wrapper.vm.inputFields[0].position).toEqual(1)
+  })
+
   function buildWrapper(initialInputFields = []) {
     return mount(DynamicTextInput, {
       propsData: { initialInputFields },

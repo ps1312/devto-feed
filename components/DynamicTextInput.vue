@@ -35,8 +35,14 @@ export default {
       this.inputFields = newInputFields
     },
     removeField(index) {
-      const newInputFields = [...this.inputFields]
+      let newInputFields = [...this.inputFields]
       newInputFields.splice(index, 1)
+
+      newInputFields = newInputFields.map((field, position) => ({
+        ...field,
+        position: position + 1,
+      }))
+
       this.inputFields = newInputFields
     },
   },
