@@ -52,6 +52,19 @@ describe('DynamicTextInput.vue', () => {
     })
   })
 
+  it('should preserve previous values on add button click', async () => {
+    const wrapper = buildWrapper()
+    await wrapper.find('[aria-label="Add"]').trigger('click')
+
+    const field = wrapper.find('#input-0')
+    const input = field.find('input')
+    await input.setValue('dumb value')
+
+    await wrapper.find('[aria-label="Add"]').trigger('click')
+
+    expect(input.element.value).not.toEqual('')
+  })
+
   function buildWrapper(initialInputFields = []) {
     return mount(DynamicTextInput, {
       propsData: { initialInputFields },
