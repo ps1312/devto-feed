@@ -37,9 +37,9 @@ describe('DynamicTextInput.vue', () => {
 
   it('should init with correct number of initialInputFields with its values', () => {
     const initialInputFields = [
-      { id: 0, value: 'filled input 1' },
-      { id: 1, value: 'filled input 2' },
-      { id: 2, value: 'filled input 3' },
+      { position: 0, value: 'filled input 1' },
+      { position: 1, value: 'filled input 2' },
+      { position: 2, value: 'filled input 3' },
     ]
 
     const wrapper = buildWrapper(initialInputFields)

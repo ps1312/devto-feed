@@ -2,12 +2,12 @@
   <form @submit.prevent>
     {{ inputFields }}
     <div
-      v-for="(input, index) in inputFields"
-      :id="'input-' + index"
-      :key="input.id"
+      v-for="(input, position) in inputFields"
+      :id="'input-' + position"
+      :key="position"
     >
       <input v-model="input.value" />
-      <button aria-label="Remove" @click="removeField(index)">-</button>
+      <button aria-label="Remove" @click="removeField(position)">-</button>
     </div>
 
     <button aria-label="Add" @click="addField">+ Add</button>
@@ -31,7 +31,7 @@ export default {
   methods: {
     addField() {
       const newInputFields = [...this.inputFields]
-      newInputFields.push({ id: this.inputFields.length + 1, value: '' })
+      newInputFields.push({ position: this.inputFields.length + 1, value: '' })
       this.inputFields = newInputFields
     },
     removeField(index) {
