@@ -5,13 +5,22 @@
       class="w-8 h-8 mx-auto fill-current text-indigo-600 animate-spin"
     />
 
-    <dragn-drop v-else class="md:max-w-xl mx-auto" :item-props="listings" />
+    <dynamic-text-input
+      :initial-input-fields="[{ position: 1, value: 'test' }]"
+    />
+
+    <dragn-drop
+      v-if="false"
+      class="md:max-w-xl mx-auto"
+      :item-props="listings"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import DragnDrop from '~/components/DragnDrop.vue'
+import DynamicTextInput from '~/components/DynamicTextInput.vue'
 import LoadingIndicator from '~/components/LoadingIndicator.vue'
 
 export default Vue.extend({
@@ -19,6 +28,7 @@ export default Vue.extend({
   components: {
     DragnDrop,
     LoadingIndicator,
+    DynamicTextInput,
   },
   data() {
     return {
