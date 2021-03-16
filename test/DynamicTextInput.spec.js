@@ -9,10 +9,16 @@ describe('DynamicTextInput.vue', () => {
     expect(wrapper.find('button').text()).toBe('+ Add')
   })
 
-  it('should create a input field on add button press', async () => {
+  it('should create multiple input fields on multiple add button presses', async () => {
     const wrapper = mount(DynamicTextInput)
 
     await wrapper.find('button').trigger('click')
     expect(wrapper.findAll('input').length).toEqual(1)
+
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.findAll('input').length).toEqual(2)
+
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.findAll('input').length).toEqual(3)
   })
 })
