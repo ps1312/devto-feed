@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-gray-100 rounded-md flex p-4 items-center justify-between">
+  <div
+    class="bg-gray-100 rounded-md flex items-center justify-between px-4 py-6"
+  >
     <span class="text-gray-900 font-bold text-lg">
       {{ listing.title }}
     </span>
