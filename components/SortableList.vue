@@ -1,14 +1,10 @@
 <template>
-  <ul class="flex flex-col space-y-4 cursor-move">
+  <ul class="space-y-4 cursor-move">
     <li
       v-for="(item, index) in previewItems"
-      id="item"
       :key="item.id"
       draggable="true"
-      :class="[
-        'inline-flex items-center bg-gray-100 p-2 m-2 rounded-md h-20',
-        current === index && 'opacity-0',
-      ]"
+      :class="[current === index && 'opacity-0']"
       @dragstart="onDragStart(index)"
       @dragover="onDragOver"
       @drag="onDrag"
@@ -16,23 +12,14 @@
       @dragenter="onDragEnter($event, index)"
       @dragend="resetDrag"
     >
-      <div class="flex-1 flex flex-col p-3">
-        <span class="text-gray-900 font-bold text-lg">
-          {{ item.title }}
-        </span>
-      </div>
-
-      <base-icon class="h-4 w-4 text-gray-500" />
+      <slot :item="item"></slot>
     </li>
   </ul>
 </template>
 
 <script>
-import BaseIcon from './BaseIcon.vue'
-
 export default {
-  name: 'DragnDrop',
-  components: { BaseIcon },
+  name: 'SortableList',
   props: {
     itemProps: {
       type: Array,
@@ -51,7 +38,6 @@ export default {
       if (this.current !== null) {
         return this.reorderList([...this.items], this.start, this.current)
       }
-
       return this.items
     },
   },
@@ -96,5 +82,3 @@ export default {
   },
 }
 </script>
-
-<style></style>

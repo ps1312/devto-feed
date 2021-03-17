@@ -1,30 +1,22 @@
 <template>
-  <div>
-    <loading-indicator
-      v-if="$fetchState.pending"
-      class="w-8 h-8 mx-auto fill-current text-indigo-600 animate-spin"
-    />
-
-    <!-- <dynamic-text-input
-      :initial-input-fields="[{ position: 1, value: 'test' }]"
-    /> -->
-
-    <dragn-drop v-else class="md:max-w-xl mx-auto" :item-props="listings" />
+  <div class="mx-auto w-1/2">
+    <sortable-list :item-props="listings">
+      <div slot-scope="{ item }">
+        <listing-list-item :listing="item" />
+      </div>
+    </sortable-list>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import DragnDrop from '~/components/DragnDrop.vue'
-// import DynamicTextInput from '~/components/DynamicTextInput.vue'
-import LoadingIndicator from '~/components/LoadingIndicator.vue'
+<script>
+import ListingListItem from '~/components/ListingListItem.vue'
+import SortableList from '~/components/SortableList.vue'
 
-export default Vue.extend({
+export default {
   name: 'PageListings',
   components: {
-    DragnDrop,
-    LoadingIndicator,
-    // DynamicTextInput,
+    SortableList,
+    ListingListItem,
   },
   data() {
     return {
@@ -36,5 +28,5 @@ export default Vue.extend({
 
     this.listings = response.data
   },
-})
+}
 </script>

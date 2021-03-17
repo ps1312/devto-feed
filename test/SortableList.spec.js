@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils'
-import DragnDrop from '@/components/DragnDrop.vue'
+import { shallowMount } from '@vue/test-utils'
+import SortableList from '@/components/SortableList.vue'
 
-describe('DragnDrop.vue', () => {
+describe('SortableList.vue', () => {
   it('reorders list on drag and drop events', async () => {
     let wrappersList
-    const wrapper = mount(DragnDrop, {
+    const wrapper = shallowMount(SortableList, {
       propsData: {
         itemProps: [0, 1, 2],
       },
@@ -12,21 +12,21 @@ describe('DragnDrop.vue', () => {
 
     wrappersList = await wrapper.findAll('li').wrappers
     await simulate(wrappersList[2], 'dragstart')
-    await simulate(wrappersList[0], 'dragover')
+    await simulate(wrappersList[0], 'dragenter')
     await simulate(wrappersList[0], 'drop')
-    expect(wrapper.vm.items).toStrictEqual([2, 1, 0])
+    expect(wrapper.vm.items).toStrictEqual([2, 0, 1])
 
     wrappersList = await wrapper.findAll('li').wrappers
     await simulate(wrappersList[1], 'dragstart')
-    await simulate(wrappersList[0], 'dragover')
+    await simulate(wrappersList[0], 'dragenter')
     await simulate(wrappersList[0], 'drop')
-    expect(wrapper.vm.items).toStrictEqual([1, 2, 0])
+    expect(wrapper.vm.items).toStrictEqual([0, 2, 1])
 
     wrappersList = await wrapper.findAll('li').wrappers
     await simulate(wrappersList[0], 'dragstart')
-    await simulate(wrappersList[2], 'dragover')
+    await simulate(wrappersList[2], 'dragenter')
     await simulate(wrappersList[2], 'drop')
-    expect(wrapper.vm.items).toStrictEqual([0, 2, 1])
+    expect(wrapper.vm.items).toStrictEqual([2, 1, 0])
   })
 
   const dataTransferMock = {
